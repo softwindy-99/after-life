@@ -1,0 +1,17 @@
+services:
+  after-life:
+    build: .
+    image: after-life:local
+    ports:
+      - '${AFTER_LIFE_PORT:-8080}:3000'
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - app-data:/var/lib/after-life
+      - env-config:/etc/after-life
+    restart: unless-stopped
+    stop_grace_period: 1m
+
+volumes:
+  mysql-data:
+  app-data:
+  env-config:

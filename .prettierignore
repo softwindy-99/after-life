@@ -1,0 +1,23 @@
+frontend/dist
+frontend/node_modules
+coverage
+dist
+node_modules
+package-lock.json
+frontend/package-lock.json
+frontend/*.js
+frontend/*.d.ts
+frontend/*.tsbuildinfo
+
+# Local instructions, secrets and runtime state are not project source.
+.agents
+.codex
+.env*
+.git
+
+**/node_modules
+**/dist
+**/coverage
+**/package-lock.json
+**/.codex
+**/.env*

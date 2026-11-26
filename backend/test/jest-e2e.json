@@ -1,0 +1,16 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.ts$": "ts-jest",
+    "^.+\\.js$": "<rootDir>/esm-js-transform.cjs"
+  },
+  "transformIgnorePatterns": [
+    "<rootDir>/../node_modules/(?!sanitize-html/node_modules/(htmlparser2|domhandler|domutils|domelementtype|entities)/)"
+  ],
+  "moduleNameMapper": {
+    "^src/(.*)$": "<rootDir>/../src/$1"
+  }
+}

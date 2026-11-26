@@ -1,0 +1,170 @@
+@keyframes ui-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes ui-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes ui-drawer-enter {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes ui-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes ui-progress {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(350%);
+  }
+}
+@keyframes ui-boot-enter {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100%);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+}
+@keyframes ui-check-in {
+  from {
+    transform: scale(0.92);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes select-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes setup-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes setup-step-forward {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes setup-step-backward {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.setup-step-content[data-direction='forward'] {
+  animation: setup-step-forward 240ms var(--ease-enter) both;
+}
+.setup-step-content[data-direction='backward'] {
+  animation: setup-step-backward 240ms var(--ease-enter) both;
+}
+.setup-steps button > span {
+  transition:
+    background-color var(--duration-normal) ease,
+    color var(--duration-normal) ease;
+}
+.setup-steps button::after {
+  content: '';
+  position: absolute;
+  inset: auto 8px 0;
+  height: 2px;
+  background: hsl(var(--accent));
+  transform: scaleX(0);
+  transition: transform 240ms var(--ease-enter);
+}
+.setup-steps button.active::after {
+  transform: scaleX(1);
+}
+.setup-shell:has(.auth-atmosphere[data-paused]) .setup-step-content {
+  animation: none;
+}
+.setup-shell:has(.auth-atmosphere[data-paused]) .setup-steps button,
+.setup-shell:has(.auth-atmosphere[data-paused]) .setup-steps button > span,
+.setup-shell:has(.auth-atmosphere[data-paused]) .setup-steps button::after {
+  transition: none;
+}
+.page-transition {
+  animation: ui-enter var(--duration-normal) var(--ease-enter) both;
+}
+.dialog-surface[open] {
+  animation: ui-dialog-enter var(--duration-normal) var(--ease-enter);
+}
+.dialog-surface[open]::backdrop {
+  animation: ui-enter var(--duration-fast) ease-out;
+}
+.navigation-dialog[open] {
+  animation: ui-drawer-enter var(--duration-slow) var(--ease-enter);
+}
+.ui-message {
+  animation: ui-enter var(--duration-normal) var(--ease-enter);
+}
+.ui-spinner {
+  animation: ui-spin 850ms linear infinite;
+}
+.ui-progress.is-indeterminate > span {
+  animation: ui-progress 1.35s ease-in-out infinite;
+}
+.boot-wordmark {
+  animation: ui-boot-enter var(--duration-slow) var(--ease-enter) both;
+}
+.boot-status {
+  animation: ui-enter var(--duration-normal) var(--ease-enter) both;
+  animation-delay: 80ms;
+}
+.check-in-hero.is-complete .check-in-hero-icon {
+  animation: ui-check-in var(--duration-normal) var(--ease-enter);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .ui-progress.is-indeterminate > span {
+    width: 100%;
+    transform: none;
+    background: hsl(var(--muted-foreground));
+  }
+}
